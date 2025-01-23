@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: [5, "Invalid Email"],
+    lowercase: true,
+    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"],
   },
   password: {
     type: String,
@@ -34,7 +35,10 @@ userSchema.methods.generateAuthToken = function () {
     {
       _id: this._id,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "24h",
+    }
   );
   return token;
 };
@@ -47,6 +51,6 @@ userSchema.statics.hashPassword = async function (password) {
   return await bcrypt.hash(password, 10);
 };
 
-const userModel = mongoose.model("user", userSchema);
+const userModel = mongoose.model("User", userSchema);
 
 module.exports = userModel;
