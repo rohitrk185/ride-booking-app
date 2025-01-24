@@ -71,7 +71,7 @@ const UserSignup = () => {
             className="bg-[#eee] mb-6 rounded px-2 py-2 outline-none border-none w-full text-base placeholder:text-sm"
           />
           <button className="bg-[#111] text-white font-semibold mb-5 rounded px-2 py-2 outline-none border-none w-full text-lg placeholder:text-base">
-            Login
+            Create Account
           </button>
 
           <p className="text-center">
