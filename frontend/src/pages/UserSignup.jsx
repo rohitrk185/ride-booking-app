@@ -1,24 +1,47 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserDataContext } from "../context/UserContext";
 
 const UserSignup = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
-  const [userData, setUserData] = useState({});
+  const { user, setUser } = useContext(UserDataContext);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (user && user.email) {
+      navigate("/home");
+    }
+  }, [user]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUserData({
+    const newUser = {
       fullname: {
         firstname,
         lastname,
       },
       email,
       password,
-    });
+    };
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/users/register`,
+      newUser
+    );
+
+    if (response.status === 201) {
+      const { token, user: createdUser } = response.data;
+      setUser(createdUser);
+      localStorage.setItem("token", token);
+
+      navigate("/home", { replace: true });
+    }
 
     setEmail("");
     setPassword("");
@@ -61,6 +84,8 @@ const UserSignup = () => {
             required
             type="email"
             placeholder="email@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="bg-[#eee] mb-6 rounded px-2 py-2 outline-none border-none w-full text-base placeholder:text-sm"
           />
 
@@ -68,6 +93,8 @@ const UserSignup = () => {
           <input
             required
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="bg-[#eee] mb-6 rounded px-2 py-2 outline-none border-none w-full text-base placeholder:text-sm"
           />
           <button className="bg-[#111] text-white font-semibold mb-5 rounded px-2 py-2 outline-none border-none w-full text-lg placeholder:text-base">

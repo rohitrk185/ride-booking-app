@@ -23,6 +23,8 @@ module.exports.registerUser = async (req, res, next) => {
 
   const token = user.generateAuthToken();
 
+  user.password = null;
+
   console.log("User created successfully");
   return res.status(201).json({ token, user });
 };
@@ -50,12 +52,13 @@ module.exports.loginUser = async (req, res, next) => {
   const token = await user.generateAuthToken();
 
   res.cookie("token", token);
+  user.password = null;
 
   return res.status(200).json({ token, user });
 };
 
 module.exports.getUserProfile = async (req, res, next) => {
-  return res.status(200).json(req.user);
+  return res.status(200).json({ user: req.user });
 };
 
 module.exports.logoutUser = async (req, res, next) => {

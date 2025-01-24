@@ -25,12 +25,14 @@ module.exports.registerCaptain = async (req, res, next) => {
     color: vehicle.color,
     plate: vehicle.plate,
     capacity: vehicle.capacity,
-    vehicleType: vehicle.vehicleType,
+    vehicleType: vehicle.type,
   });
 
   const token = await captain.generateAuthToken();
 
-  return res.status(200).json({ token, captain });
+  captain.password = null;
+
+  return res.status(201).json({ token, captain });
 };
 
 module.exports.loginCaptain = async (req, res, next) => {
@@ -54,12 +56,13 @@ module.exports.loginCaptain = async (req, res, next) => {
   const token = await captain.generateAuthToken();
 
   res.cookie("token", token);
+  captain.password = null;
 
   return res.status(200).json({ token, captain });
 };
 
 module.exports.getCaptainProfile = async (req, res, next) => {
-  return res.status(200).json(req.captain);
+  return res.status(200).json({ captain: req.captain });
 };
 
 module.exports.logoutCaptain = async (req, res, next) => {

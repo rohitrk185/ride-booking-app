@@ -28,7 +28,7 @@ router.post(
     body("vehicle.capacity")
       .isInt({ min: 1 })
       .withMessage("Capacity must be atleast 1"),
-    body("vehicle.vehicleType")
+    body("vehicle.type")
       .isIn(["car", "motorcycle", "auto"])
       .withMessage("Invalid Vehicle Type"),
   ],
