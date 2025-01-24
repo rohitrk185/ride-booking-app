@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCaptain } from "../context/CaptainContext";
+import { useUser } from "../context/UserContext";
 import axios from "axios";
 
 const CaptainSignup = () => {
@@ -17,6 +18,7 @@ const CaptainSignup = () => {
   const [vehicleCapacity, setVehicleCapacity] = useState("");
 
   const { captain, setCaptain } = useCaptain();
+  const { setUser } = useUser();
 
   useEffect(() => {
     if (captain && captain.email) {
@@ -50,6 +52,7 @@ const CaptainSignup = () => {
       const { token, captain: createdCaptain } = response.data;
       localStorage.setItem("token", token);
       setCaptain(createdCaptain);
+      setUser(null);
       navigate("/captain-home");
     }
 

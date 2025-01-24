@@ -1,7 +1,8 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserDataContext } from "../context/UserContext";
+import { useUser } from "../context/UserContext";
 import axios from "axios";
+import { useCaptain } from "../context/CaptainContext";
 
 const UserLogin = () => {
   const navigate = useNavigate();
@@ -9,7 +10,8 @@ const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, setUser } = useContext(UserDataContext);
+  const { user, setUser } = useUser();
+  const { setCaptain } = useCaptain();
 
   useEffect(() => {
     if (user && user.email) {
@@ -32,6 +34,7 @@ const UserLogin = () => {
     if (response.status === 200) {
       const { token, user: loggedInUser } = response.data;
       setUser(loggedInUser);
+      setCaptain(null);
       localStorage.setItem("token", token);
 
       navigate("/home", { replace: true });

@@ -16,34 +16,38 @@ const CaptainProtectWrapper = ({ children }) => {
     }
 
     if (!token || !captain || !captain.email) {
-      localStorage.removeItem("token");
       return navigate("/captain-login");
     }
   }, [token, isLoading]);
 
-  axios
-    .get(`${import.meta.env.VITE_BACKEND_BASE_URL}/captains/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        const { captain: loggedInCaptain } = response.data;
-        setCaptain(loggedInCaptain);
-      } else {
-        localStorage.removeItem("token");
-        navigate("/captain-login");
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      localStorage.removeItem("token");
-      navigate("/captain-login");
-    })
-    .finally(() => {
+  useEffect(() => {
+    if (!isLoading || !token) {
       setIsLoading(false);
-    });
+      return;
+    }
+
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_BASE_URL}/captains/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          const { captain: loggedInCaptain } = response.data;
+          setCaptain(loggedInCaptain);
+        } else {
+          navigate("/captain-login");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        navigate("/captain-login");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [isLoading]);
 
   if (isLoading) {
     return <div>Loading...</div>;

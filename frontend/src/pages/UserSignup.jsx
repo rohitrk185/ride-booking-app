@@ -1,7 +1,8 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserDataContext } from "../context/UserContext";
+import { useUser } from "../context/UserContext";
+import { useCaptain } from "../context/CaptainContext";
 
 const UserSignup = () => {
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ const UserSignup = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
-  const { user, setUser } = useContext(UserDataContext);
+  const { user, setUser } = useUser();
+  const { setCaptain } = useCaptain();
 
   useEffect(() => {
     if (user && user.email) {
@@ -38,6 +40,7 @@ const UserSignup = () => {
     if (response.status === 201) {
       const { token, user: createdUser } = response.data;
       setUser(createdUser);
+      setCaptain(null);
       localStorage.setItem("token", token);
 
       navigate("/home", { replace: true });

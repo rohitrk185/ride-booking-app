@@ -10,6 +10,7 @@ const CaptainLogin = () => {
   const [password, setPassword] = useState("");
 
   const { captain, setCaptain } = useCaptain();
+  const { setUser } = useCaptain();
 
   useEffect(() => {
     if (captain && captain.email) {
@@ -32,6 +33,7 @@ const CaptainLogin = () => {
     if (response.status === 200) {
       const { token, user: loggedInUser } = response.data;
       setCaptain(loggedInUser);
+      setUser(null);
       localStorage.setItem("token", token);
 
       navigate("/captain-home", { replace: true });

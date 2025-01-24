@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { UserDataContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserDataContext);
+  const { user } = useUser();
 
   return <div>Home</div>;
 };
