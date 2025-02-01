@@ -55,11 +55,7 @@ const UserSignup = () => {
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
       <div>
-        <img
-          className="w-16 mb-10"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYQy-OIkA6In0fTvVwZADPmFFibjmszu2A0g&s"
-          alt=""
-        />
+        <img className="w-16 mb-10" src="/images/logo.png" alt="" />
 
         <form onSubmit={handleSubmit}>
           <h3 className="text-lg font-medium mb-2">What's your name</h3>

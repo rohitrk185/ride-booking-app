@@ -69,11 +69,7 @@ const CaptainSignup = () => {
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
       <div>
-        <img
-          className="w-16 mb-10"
-          src="https://pngimg.com/d/uber_PNG24.png"
-          alt=""
-        />
+        <img className="w-16 mb-10" src="/captain-logo.png" alt="" />
 
         <form onSubmit={handleSubmit}>
           <h3 className="text-lg font-medium mb-2">What's your name</h3>
