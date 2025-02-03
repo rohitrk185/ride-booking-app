@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
+import LocationSearchPanel from "../components/LocationSearchPanel";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,7 +26,8 @@ const Home = () => {
       if (panelOpen) {
         gsap.to(panelRef.current, {
           height: "70%",
-          opacity: 1,
+          padding: 24,
+          // opacity: 1,
         });
         gsap.to(panelCloseRef.current, {
           opacity: 1,
@@ -33,7 +35,8 @@ const Home = () => {
       } else {
         gsap.to(panelRef.current, {
           height: "0%",
-          opacity: 0,
+          padding: 0,
+          // opacity: 0,
         });
         gsap.to(panelCloseRef.current, {
           opacity: 0,
@@ -55,7 +58,7 @@ const Home = () => {
         />
       </div>
 
-      <div className="bg-white absolute h-screen w-full top-0 flex flex-col justify-end">
+      <div className=" absolute h-screen w-full top-0 flex flex-col justify-end">
         <div className="h-[30%] p-5 bg-white relative">
           <h5
             className="absolute top-6 right-6 text-2xl opacity-0"
@@ -97,7 +100,9 @@ const Home = () => {
           </form>
         </div>
 
-        <div className="h-0 bg-red-500 opacity-0" ref={panelRef}></div>
+        <div className="h-0 bg-white" ref={panelRef}>
+          <LocationSearchPanel />
+        </div>
       </div>
     </div>
   );
