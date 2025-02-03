@@ -1,9 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import "remixicon/fonts/remixicon.css";
 
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useUser();
+
+  const [pickup, setPickup] = useState("");
+  const [destination, setDestination] = useState("");
+  const [panelOpen, setPanelOpen] = useState(false);
+
+  const panelRef = useRef(null);
+  const panelCloseRef = useRef(null);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  useGSAP(
+    function () {
+      if (panelOpen) {
+        gsap.to(panelRef.current, {
+          height: "70%",
+          opacity: 1,
+        });
+        gsap.to(panelCloseRef.current, {
+          opacity: 1,
+        });
+      } else {
+        gsap.to(panelRef.current, {
+          height: "0%",
+          opacity: 0,
+        });
+        gsap.to(panelCloseRef.current, {
+          opacity: 0,
+        });
+      }
+    },
+    [panelOpen]
+  );
 
   return (
     <div className="h-screen relative">
@@ -17,12 +55,49 @@ const Home = () => {
         />
       </div>
 
-      <div className="bg-white absolute top-0 w-full p-5">
-        <h4>Find a trip</h4>
-        <form>
-          <input type="text" placeholder="Add a pick-up location" />
-          <input type="text" placeholder="Enter your Destination" />
-        </form>
+      <div className="bg-white absolute h-screen w-full top-0 flex flex-col justify-end">
+        <div className="h-[30%] p-5 bg-white relative">
+          <h5
+            className="absolute top-6 right-6 text-2xl opacity-0"
+            onClick={() => {
+              setPanelOpen(false);
+            }}
+            ref={panelCloseRef}
+          >
+            <i className="ri-arrow-down-wide-line" />
+          </h5>
+
+          <h4 className="text-2xl font-semibold">Find a trip</h4>
+          <form onSubmit={submitHandler}>
+            <div className="line absolute h-16 w-1 top-[45%] left-8 rounded-full bg-gray-800"></div>
+            <input
+              type="text"
+              value={pickup}
+              onClick={(e) => {
+                setPanelOpen(true);
+              }}
+              onChange={(e) => {
+                setPickup(e.target.value);
+              }}
+              placeholder="Add a pick-up location"
+              className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-5"
+            />
+            <input
+              type="text"
+              value={destination}
+              onClick={(e) => {
+                setPanelOpen(true);
+              }}
+              onChange={(e) => {
+                setDestination(e.target.value);
+              }}
+              placeholder="Enter your Destination"
+              className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-3"
+            />
+          </form>
+        </div>
+
+        <div className="h-0 bg-red-500 opacity-0" ref={panelRef}></div>
       </div>
     </div>
   );
