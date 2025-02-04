@@ -5,6 +5,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
 import LocationSearchPanel from "../components/LocationSearchPanel";
+import VehiclePanel from "../components/VehiclePanel";
+import ConfirmRide from "../components/ConfirmRide";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,9 +15,13 @@ const Home = () => {
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
   const [panelOpen, setPanelOpen] = useState(false);
+  const [vehiclePanelOpen, setVehiclePanelOpen] = useState(false);
+  const [confirmRidePanelOpen, setConfirmRidePanelOpen] = useState(false);
 
   const panelRef = useRef(null);
   const panelCloseRef = useRef(null);
+  const vehicelPanelRef = useRef(null);
+  const confirmRidePanelRef = useRef(null);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -46,11 +52,47 @@ const Home = () => {
     [panelOpen]
   );
 
+  useGSAP(
+    function () {
+      if (vehiclePanelOpen) {
+        gsap.to(vehicelPanelRef.current, {
+          transform: "translateY(0)",
+        });
+      } else {
+        gsap.to(vehicelPanelRef.current, {
+          transform: "translateY(100%)",
+        });
+      }
+    },
+    [vehiclePanelOpen]
+  );
+
+  useGSAP(
+    function () {
+      if (confirmRidePanelOpen) {
+        gsap.to(confirmRidePanelRef.current, {
+          transform: "translateY(0)",
+        });
+      } else {
+        gsap.to(confirmRidePanelRef.current, {
+          transform: "translateY(100%)",
+        });
+      }
+    },
+    [confirmRidePanelOpen]
+  );
+
   return (
-    <div className="h-screen relative">
+    <div className="h-screen relative overflow-hidden">
       <img className="w-16 absolute left-5 top-5" src="/images/logo.png" />
 
-      <div className="h-screen w-screen">
+      <div
+        className="h-screen w-screen"
+        onClick={() => {
+          setVehiclePanelOpen(false);
+          setPanelOpen(false);
+        }}
+      >
         {/* Image for Temporary use */}
         <img
           className="h-full w-full object-cover"
@@ -101,8 +143,28 @@ const Home = () => {
         </div>
 
         <div className="h-0 bg-white" ref={panelRef}>
-          <LocationSearchPanel />
+          <LocationSearchPanel
+            setPanelOpen={setPanelOpen}
+            setVehiclePanelOpen={setVehiclePanelOpen}
+          />
         </div>
+      </div>
+
+      <div
+        className="fixed w-full z-10 bottom-0 translate-y-full px-3 py-10 pt-12 bg-white"
+        ref={vehicelPanelRef}
+      >
+        <VehiclePanel
+          setVehiclePanelOpen={setVehiclePanelOpen}
+          setConfirmRidePanelOpen={setConfirmRidePanelOpen}
+        />
+      </div>
+
+      <div
+        className="fixed w-full z-10 bottom-0 translate-y-full px-3 py-6 pt-12 bg-white"
+        ref={confirmRidePanelRef}
+      >
+        <ConfirmRide setConfirmRidePanelOpen={setConfirmRidePanelOpen} />
       </div>
     </div>
   );
