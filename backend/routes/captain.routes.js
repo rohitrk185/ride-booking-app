@@ -1,52 +1,52 @@
-const express = require("express");
-const router = express.Router();
-const { body } = require("express-validator");
+const express = require('express')
+const router = express.Router()
+const { body } = require('express-validator')
 const {
   registerCaptain,
   loginCaptain,
   getCaptainProfile,
-} = require("../controllers/captain.controller");
-const { authCaptain } = require("../middlewares/auth.middleware");
-const { logoutUser } = require("../controllers/user.controller");
+} = require('../controllers/captain.controller')
+const { authCaptain } = require('../middlewares/auth.middleware')
+const { logoutUser } = require('../controllers/user.controller')
 
 router.post(
-  "/register",
+  '/register',
   [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("fullname.firstname")
+    body('email').isEmail().withMessage('Invalid Email'),
+    body('fullname.firstname')
       .isLength({ min: 3 })
-      .withMessage("First Name must be atleast 3 characters long"),
-    body("password")
+      .withMessage('First Name must be atleast 3 characters long'),
+    body('password')
       .isLength({ min: 6 })
-      .withMessage("Password must be atleast 6 characters long"),
-    body("vehicle.color")
+      .withMessage('Password must be atleast 6 characters long'),
+    body('vehicle.color')
       .isLength({ min: 3 })
-      .withMessage("Color must be atleast 3 characters long"),
-    body("vehicle.plate")
+      .withMessage('Color must be atleast 3 characters long'),
+    body('vehicle.plate')
       .isLength({ min: 3 })
-      .withMessage("Plate must be atleast 3 characters long"),
-    body("vehicle.capacity")
+      .withMessage('Plate must be atleast 3 characters long'),
+    body('vehicle.capacity')
       .isInt({ min: 1 })
-      .withMessage("Capacity must be atleast 1"),
-    body("vehicle.type")
-      .isIn(["car", "motorcycle", "auto"])
-      .withMessage("Invalid Vehicle Type"),
+      .withMessage('Capacity must be atleast 1'),
+    body('vehicle.type')
+      .isIn(['car', 'motorcycle', 'auto'])
+      .withMessage('Invalid Vehicle Type'),
   ],
   registerCaptain
-);
+)
 
 router.post(
-  "/login",
+  '/login',
   [
-    body("email").isEmail().withMessage("Invalid Email"),
-    body("password")
+    body('email').isEmail().withMessage('Invalid Email'),
+    body('password')
       .isLength({ min: 6 })
-      .withMessage("Password must be atleast 6 characters long"),
+      .withMessage('Password must be atleast 6 characters long'),
   ],
   loginCaptain
-);
+)
 
-router.get("/profile", authCaptain, getCaptainProfile);
-router.get("/logout", authCaptain, logoutUser);
+router.get('/profile', authCaptain, getCaptainProfile)
+router.get('/logout', authCaptain, logoutUser)
 
-module.exports = router;
+module.exports = router

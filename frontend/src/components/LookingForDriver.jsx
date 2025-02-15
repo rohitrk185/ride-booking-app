@@ -5,7 +5,7 @@ const LookingForDriver = ({ setVehicleFound }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setVehicleFound(false);
+          setVehicleFound(false)
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -43,7 +43,7 @@ const LookingForDriver = ({ setVehicleFound }) => {
         <div className="flex items-center gap-5 p-2">
           <i className="ri-currency-line text-lg" />
           <div className="">
-            <h3 className="text-lg font-medium">&#8377; {"193.20"}</h3>
+            <h3 className="text-lg font-medium">&#8377; {'193.20'}</h3>
             <p className="text-gray-600 text-sm -mt-1">Cash</p>
           </div>
         </div>
@@ -53,7 +53,7 @@ const LookingForDriver = ({ setVehicleFound }) => {
         Confirm
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default LookingForDriver;
+export default LookingForDriver

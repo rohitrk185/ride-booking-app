@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const blacklistTokenSchema = new mongoose.Schema({
   token: { type: String, required: true, unique: true },
@@ -7,6 +7,6 @@ const blacklistTokenSchema = new mongoose.Schema({
     default: Date.now,
     expires: 86400,
   },
-});
+})
 
-module.exports = mongoose.model("BlaclistToken", blacklistTokenSchema);
+module.exports = mongoose.model('BlaclistToken', blacklistTokenSchema)

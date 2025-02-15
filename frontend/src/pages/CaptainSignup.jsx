@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCaptain } from "../context/CaptainContext";
-import { useUser } from "../context/UserContext";
-import axios from "axios";
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCaptain } from '../context/CaptainContext'
+import { useUser } from '../context/UserContext'
+import axios from 'axios'
 
 const CaptainSignup = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
 
-  const [vehicleType, setVehicleType] = useState("");
-  const [vehicleColor, setVehicleColor] = useState("");
-  const [vehiclePlate, setVehiclePlate] = useState("");
-  const [vehicleCapacity, setVehicleCapacity] = useState("");
+  const [vehicleType, setVehicleType] = useState('')
+  const [vehicleColor, setVehicleColor] = useState('')
+  const [vehiclePlate, setVehiclePlate] = useState('')
+  const [vehicleCapacity, setVehicleCapacity] = useState('')
 
-  const { captain, setCaptain } = useCaptain();
-  const { setUser } = useUser();
+  const { captain, setCaptain } = useCaptain()
+  const { setUser } = useUser()
 
   useEffect(() => {
     if (captain && captain.email) {
-      navigate("/captain-home");
+      navigate('/captain-home')
     }
-  }, [captain]);
+  }, [captain])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const captainData = {
       fullname: {
         firstname,
@@ -41,30 +41,30 @@ const CaptainSignup = () => {
         capacity: vehicleCapacity,
         type: vehicleType,
       },
-    };
+    }
 
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_BASE_URL}/captains/register`,
       captainData
-    );
+    )
 
     if (response.status === 201) {
-      const { token, captain: createdCaptain } = response.data;
-      localStorage.setItem("token", token);
-      setCaptain(createdCaptain);
-      setUser(null);
-      navigate("/captain-home");
+      const { token, captain: createdCaptain } = response.data
+      localStorage.setItem('token', token)
+      setCaptain(createdCaptain)
+      setUser(null)
+      navigate('/captain-home')
     }
 
-    setEmail("");
-    setPassword("");
-    setFirstname("");
-    setLastname("");
-    setVehicleType("");
-    setVehicleColor("");
-    setVehicleCapacity("");
-    setVehiclePlate("");
-  };
+    setEmail('')
+    setPassword('')
+    setFirstname('')
+    setLastname('')
+    setVehicleType('')
+    setVehicleColor('')
+    setVehicleCapacity('')
+    setVehiclePlate('')
+  }
 
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
@@ -120,7 +120,7 @@ const CaptainSignup = () => {
               placeholder="Vehicle Color"
               value={vehicleColor}
               onChange={(e) => {
-                setVehicleColor(e.target.value);
+                setVehicleColor(e.target.value)
               }}
             />
             <input
@@ -130,7 +130,7 @@ const CaptainSignup = () => {
               placeholder="Vehicle Plate"
               value={vehiclePlate}
               onChange={(e) => {
-                setVehiclePlate(e.target.value);
+                setVehiclePlate(e.target.value)
               }}
             />
           </div>
@@ -142,7 +142,7 @@ const CaptainSignup = () => {
               placeholder="Vehicle Capacity"
               value={vehicleCapacity}
               onChange={(e) => {
-                setVehicleCapacity(e.target.value);
+                setVehicleCapacity(e.target.value)
               }}
             />
             <select
@@ -150,7 +150,7 @@ const CaptainSignup = () => {
               className="bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border text-lg placeholder:text-base"
               value={vehicleType}
               onChange={(e) => {
-                setVehicleType(e.target.value);
+                setVehicleType(e.target.value)
               }}
             >
               <option value="" disabled>
@@ -167,7 +167,7 @@ const CaptainSignup = () => {
           </button>
 
           <p className="text-center">
-            <span>Already have an account?</span>{" "}
+            <span>Already have an account?</span>{' '}
             <Link className="text-blue-600" to="/captain-login">
               Login here
             </Link>
@@ -177,13 +177,13 @@ const CaptainSignup = () => {
 
       <div className="my-20 pb-4">
         <p className="text-[0.5rem] leading-tight">
-          This site is protected by reCAPTCHA and the{" "}
-          <span className="underline">Google Privacy Policy</span> and{" "}
+          This site is protected by reCAPTCHA and the{' '}
+          <span className="underline">Google Privacy Policy</span> and{' '}
           <span className="underline">Terms of Service</span> apply.
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CaptainSignup;
+export default CaptainSignup

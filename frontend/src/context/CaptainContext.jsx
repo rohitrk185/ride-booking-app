@@ -1,25 +1,25 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react'
 
-export const CaptainDataContext = createContext();
+export const CaptainDataContext = createContext()
 
 export const useCaptain = () => {
-  const context = useContext(CaptainDataContext);
+  const context = useContext(CaptainDataContext)
   if (!context) {
-    throw new Error("useCaptain must be used within a CaptainProvider");
+    throw new Error('useCaptain must be used within a CaptainProvider')
   }
-  return context;
-};
+  return context
+}
 
 const CaptainContext = ({ children }) => {
   const [captain, setCaptain] = useState({
-    email: "",
+    email: '',
     fullname: {
-      firstname: "",
-      lastname: "",
+      firstname: '',
+      lastname: '',
     },
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const value = {
     captain,
@@ -28,13 +28,13 @@ const CaptainContext = ({ children }) => {
     setIsLoading,
     error,
     setError,
-  };
+  }
 
   return (
     <CaptainDataContext.Provider value={value}>
       {children}
     </CaptainDataContext.Provider>
-  );
-};
+  )
+}
 
-export default CaptainContext;
+export default CaptainContext

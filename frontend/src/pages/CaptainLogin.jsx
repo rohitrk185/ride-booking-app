@@ -1,47 +1,47 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCaptain } from "../context/CaptainContext";
-import axios from "axios";
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCaptain } from '../context/CaptainContext'
+import axios from 'axios'
 
 const CaptainLogin = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const { captain, setCaptain } = useCaptain();
-  const { setUser } = useCaptain();
+  const { captain, setCaptain } = useCaptain()
+  const { setUser } = useCaptain()
 
   useEffect(() => {
     if (captain && captain.email) {
-      navigate("/captain-home");
+      navigate('/captain-home')
     }
-  }, [captain]);
+  }, [captain])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const captainData = {
       email,
       password,
-    };
+    }
 
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_BASE_URL}/captains/login`,
       captainData
-    );
+    )
 
     if (response.status === 200) {
-      const { token, user: loggedInUser } = response.data;
-      setCaptain(loggedInUser);
-      setUser(null);
-      localStorage.setItem("token", token);
+      const { token, user: loggedInUser } = response.data
+      setCaptain(loggedInUser)
+      setUser(null)
+      localStorage.setItem('token', token)
 
-      navigate("/captain-home", { replace: true });
+      navigate('/captain-home', { replace: true })
     }
 
-    setEmail("");
-    setPassword("");
-  };
+    setEmail('')
+    setPassword('')
+  }
 
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
@@ -73,7 +73,7 @@ const CaptainLogin = () => {
           </button>
 
           <p className="text-center">
-            <span>Want to Join Fleet?</span>{" "}
+            <span>Want to Join Fleet?</span>{' '}
             <Link className="text-blue-600" to="/captain-signup">
               Register as Captain
             </Link>
@@ -90,7 +90,7 @@ const CaptainLogin = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CaptainLogin;
+export default CaptainLogin

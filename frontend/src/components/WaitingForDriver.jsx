@@ -5,7 +5,7 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setWaitingForDriver(false);
+          setWaitingForDriver(false)
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -55,17 +55,17 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
         <div className="flex items-center gap-5 p-2">
           <i className="ri-currency-line text-lg" />
           <div className="">
-            <h3 className="text-lg font-medium">&#8377; {"193.20"}</h3>
+            <h3 className="text-lg font-medium">&#8377; {'193.20'}</h3>
             <p className="text-gray-600 text-sm -mt-1">Cash</p>
           </div>
         </div>
       </div>
 
-      <button className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5">
+      {/* <button className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5">
         Confirm
-      </button>
+      </button> */}
     </div>
-  );
-};
+  )
+}
 
-export default WaitingForDriver;
+export default WaitingForDriver

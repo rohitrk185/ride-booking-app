@@ -1,117 +1,117 @@
-import { useRef, useState } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import "remixicon/fonts/remixicon.css";
-import LocationSearchPanel from "../components/LocationSearchPanel";
-import VehiclePanel from "../components/VehiclePanel";
-import ConfirmRide from "../components/ConfirmRide";
-import LookingForDriver from "../components/LookingForDriver";
-import WaitingForDriver from "../components/WaitingForDriver";
+import { useRef, useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import 'remixicon/fonts/remixicon.css'
+import LocationSearchPanel from '../components/LocationSearchPanel'
+import VehiclePanel from '../components/VehiclePanel'
+import ConfirmRide from '../components/ConfirmRide'
+import LookingForDriver from '../components/LookingForDriver'
+import WaitingForDriver from '../components/WaitingForDriver'
 
 const Home = () => {
-  const [pickup, setPickup] = useState("");
-  const [destination, setDestination] = useState("");
-  const [panelOpen, setPanelOpen] = useState(false);
-  const [vehiclePanelOpen, setVehiclePanelOpen] = useState(false);
-  const [confirmRidePanelOpen, setConfirmRidePanelOpen] = useState(false);
-  const [vehicleFound, setVehicleFound] = useState(false);
-  const [waitingForDriver, setWaitingForDriver] = useState(false);
+  const [pickup, setPickup] = useState('')
+  const [destination, setDestination] = useState('')
+  const [panelOpen, setPanelOpen] = useState(false)
+  const [vehiclePanelOpen, setVehiclePanelOpen] = useState(false)
+  const [confirmRidePanelOpen, setConfirmRidePanelOpen] = useState(false)
+  const [vehicleFound, setVehicleFound] = useState(false)
+  const [waitingForDriver, setWaitingForDriver] = useState(false)
 
-  const panelRef = useRef(null);
-  const panelCloseRef = useRef(null);
-  const vehicelPanelRef = useRef(null);
-  const confirmRidePanelRef = useRef(null);
-  const vehicleFoundRef = useRef(null);
-  const waitingForDriverRef = useRef(null);
+  const panelRef = useRef(null)
+  const panelCloseRef = useRef(null)
+  const vehicelPanelRef = useRef(null)
+  const confirmRidePanelRef = useRef(null)
+  const vehicleFoundRef = useRef(null)
+  const waitingForDriverRef = useRef(null)
 
   const submitHandler = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   useGSAP(
     function () {
       if (panelOpen) {
         gsap.to(panelRef.current, {
-          height: "70%",
+          height: '70%',
           padding: 24,
           // opacity: 1,
-        });
+        })
         gsap.to(panelCloseRef.current, {
           opacity: 1,
-        });
+        })
       } else {
         gsap.to(panelRef.current, {
-          height: "0%",
+          height: '0%',
           padding: 0,
           // opacity: 0,
-        });
+        })
         gsap.to(panelCloseRef.current, {
           opacity: 0,
-        });
+        })
       }
     },
     [panelOpen]
-  );
+  )
 
   useGSAP(
     function () {
       if (vehiclePanelOpen) {
         gsap.to(vehicelPanelRef.current, {
-          transform: "translateY(0)",
-        });
+          transform: 'translateY(0)',
+        })
       } else {
         gsap.to(vehicelPanelRef.current, {
-          transform: "translateY(100%)",
-        });
+          transform: 'translateY(100%)',
+        })
       }
     },
     [vehiclePanelOpen]
-  );
+  )
 
   useGSAP(
     function () {
       if (confirmRidePanelOpen) {
         gsap.to(confirmRidePanelRef.current, {
-          transform: "translateY(0)",
-        });
+          transform: 'translateY(0)',
+        })
       } else {
         gsap.to(confirmRidePanelRef.current, {
-          transform: "translateY(100%)",
-        });
+          transform: 'translateY(100%)',
+        })
       }
     },
     [confirmRidePanelOpen]
-  );
+  )
 
   useGSAP(
     function () {
       if (vehicleFound) {
         gsap.to(vehicleFoundRef.current, {
-          transform: "translateY(0)",
-        });
+          transform: 'translateY(0)',
+        })
       } else {
         gsap.to(vehicleFoundRef.current, {
-          transform: "translateY(100%)",
-        });
+          transform: 'translateY(100%)',
+        })
       }
     },
     [vehicleFound]
-  );
+  )
 
   useGSAP(
     function () {
       if (waitingForDriver) {
         gsap.to(waitingForDriverRef.current, {
-          transform: "translateY(0)",
-        });
+          transform: 'translateY(0)',
+        })
       } else {
         gsap.to(waitingForDriverRef.current, {
-          transform: "translateY(100%)",
-        });
+          transform: 'translateY(100%)',
+        })
       }
     },
     [waitingForDriver]
-  );
+  )
 
   return (
     <div className="h-screen relative overflow-hidden">
@@ -120,8 +120,8 @@ const Home = () => {
       <div
         className="h-screen w-screen"
         onClick={() => {
-          setVehiclePanelOpen(false);
-          setPanelOpen(false);
+          setVehiclePanelOpen(false)
+          setPanelOpen(false)
         }}
       >
         {/* Image for Temporary use */}
@@ -136,7 +136,7 @@ const Home = () => {
           <h5
             className="absolute top-6 right-6 text-2xl opacity-0"
             onClick={() => {
-              setPanelOpen(false);
+              setPanelOpen(false)
             }}
             ref={panelCloseRef}
           >
@@ -150,10 +150,10 @@ const Home = () => {
               type="text"
               value={pickup}
               onClick={() => {
-                setPanelOpen(true);
+                setPanelOpen(true)
               }}
               onChange={(e) => {
-                setPickup(e.target.value);
+                setPickup(e.target.value)
               }}
               placeholder="Add a pick-up location"
               className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-5"
@@ -162,10 +162,10 @@ const Home = () => {
               type="text"
               value={destination}
               onClick={() => {
-                setPanelOpen(true);
+                setPanelOpen(true)
               }}
               onChange={(e) => {
-                setDestination(e.target.value);
+                setDestination(e.target.value)
               }}
               placeholder="Enter your Destination"
               className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-3"
@@ -215,7 +215,7 @@ const Home = () => {
         <WaitingForDriver setWaitingForDriver={setWaitingForDriver} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

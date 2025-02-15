@@ -5,7 +5,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setVehiclePanelOpen(false);
+          setVehiclePanelOpen(false)
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -16,8 +16,8 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
-          setVehiclePanelOpen(false);
-          setConfirmRidePanelOpen(true);
+          setVehiclePanelOpen(false)
+          setConfirmRidePanelOpen(true)
         }}
       >
         <img
@@ -26,7 +26,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
         />
         <div className="ml-2 w-1/2">
           <h4 className="font-medium">
-            UberGo{" "}
+            UberGo{' '}
             <span>
               <i className="ri-user-3-fill" />
             </span>
@@ -36,14 +36,14 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
             Affordable, compact rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">&#8377;{"193.20"}</h2>
+        <h2 className="text-lg font-semibold">&#8377;{'193.20'}</h2>
       </div>
 
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
-          setVehiclePanelOpen(false);
-          setConfirmRidePanelOpen(true);
+          setVehiclePanelOpen(false)
+          setConfirmRidePanelOpen(true)
         }}
       >
         <img
@@ -52,7 +52,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
         />
         <div className="-ml-7 w-1/2">
           <h4 className="font-medium">
-            Moto{" "}
+            Moto{' '}
             <span>
               <i className="ri-user-3-fill" />
             </span>
@@ -62,14 +62,14 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
             Affordable motorcycle rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">&#8377;{"65"}</h2>
+        <h2 className="text-lg font-semibold">&#8377;{'65'}</h2>
       </div>
 
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
-          setVehiclePanelOpen(false);
-          setConfirmRidePanelOpen(true);
+          setVehiclePanelOpen(false)
+          setConfirmRidePanelOpen(true)
         }}
       >
         <img
@@ -78,7 +78,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
         />
         <div className="ml-2 w-1/2">
           <h4 className="font-medium">
-            Moto{" "}
+            Moto{' '}
             <span>
               <i className="ri-user-3-fill" />
             </span>
@@ -88,10 +88,10 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
             Affordable auto rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">&#8377;{"118.68"}</h2>
+        <h2 className="text-lg font-semibold">&#8377;{'118.68'}</h2>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VehiclePanel;
+export default VehiclePanel

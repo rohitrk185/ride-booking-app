@@ -1,28 +1,28 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useUser } from "../context/UserContext";
-import { useCaptain } from "../context/CaptainContext";
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useUser } from '../context/UserContext'
+import { useCaptain } from '../context/CaptainContext'
 
 const UserSignup = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
 
-  const { user, setUser } = useUser();
-  const { setCaptain } = useCaptain();
+  const { user, setUser } = useUser()
+  const { setCaptain } = useCaptain()
 
   useEffect(() => {
     if (user && user.email) {
-      navigate("/home");
+      navigate('/home')
     }
-  }, [user]);
+  }, [user])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const newUser = {
       fullname: {
         firstname,
@@ -30,27 +30,27 @@ const UserSignup = () => {
       },
       email,
       password,
-    };
+    }
 
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_BASE_URL}/users/register`,
       newUser
-    );
+    )
 
     if (response.status === 201) {
-      const { token, user: createdUser } = response.data;
-      setUser(createdUser);
-      setCaptain(null);
-      localStorage.setItem("token", token);
+      const { token, user: createdUser } = response.data
+      setUser(createdUser)
+      setCaptain(null)
+      localStorage.setItem('token', token)
 
-      navigate("/home", { replace: true });
+      navigate('/home', { replace: true })
     }
 
-    setEmail("");
-    setPassword("");
-    setFirstname("");
-    setLastname("");
-  };
+    setEmail('')
+    setPassword('')
+    setFirstname('')
+    setLastname('')
+  }
 
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
@@ -101,7 +101,7 @@ const UserSignup = () => {
           </button>
 
           <p className="text-center">
-            <span>Already have an account?</span>{" "}
+            <span>Already have an account?</span>{' '}
             <Link className="text-blue-600" to="/captain-login">
               Login here
             </Link>
@@ -111,13 +111,13 @@ const UserSignup = () => {
 
       <div>
         <p className="text-[0.5rem] leading-tight">
-          This site is protected by reCAPTCHA and the{" "}
-          <span className="underline">Google Privacy Policy</span> and{" "}
+          This site is protected by reCAPTCHA and the{' '}
+          <span className="underline">Google Privacy Policy</span> and{' '}
           <span className="underline">Terms of Service</span> apply.
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserSignup;
+export default UserSignup

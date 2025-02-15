@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const captainSchema = new mongoose.Schema({
   fullname: {
     firstname: {
       type: String,
       required: true,
-      minlength: [3, "First name must consist of atleast 3 characters"],
+      minlength: [3, 'First name must consist of atleast 3 characters'],
     },
     lastname: {
       type: String,
@@ -18,7 +18,7 @@ const captainSchema = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true,
-    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"],
+    match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email'],
   },
   password: {
     type: String,
@@ -30,29 +30,29 @@ const captainSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["active", "inactive"],
-    default: "inactive",
+    enum: ['active', 'inactive'],
+    default: 'inactive',
   },
   vehicle: {
     color: {
       type: String,
       required: true,
-      minlength: [3, "Color must be atleast 3 characters long"],
+      minlength: [3, 'Color must be atleast 3 characters long'],
     },
     plate: {
       type: String,
       required: true,
-      minlength: [3, "Plate must be atleast 3 characters long"],
+      minlength: [3, 'Plate must be atleast 3 characters long'],
     },
     capacity: {
       type: Number,
       required: true,
-      min: [1, "Capacity must be atleast 1"],
+      min: [1, 'Capacity must be atleast 1'],
     },
     type: {
       type: String,
       required: true,
-      enum: ["car", "motorcycle", "auto"],
+      enum: ['car', 'motorcycle', 'auto'],
     },
   },
   location: {
@@ -63,7 +63,7 @@ const captainSchema = new mongoose.Schema({
       type: Number,
     },
   },
-});
+})
 
 captainSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
@@ -72,20 +72,20 @@ captainSchema.methods.generateAuthToken = function () {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "24h",
+      expiresIn: '24h',
     }
-  );
-  return token;
-};
+  )
+  return token
+}
 
 captainSchema.methods.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
-};
+  return await bcrypt.compare(password, this.password)
+}
 
 captainSchema.statics.hashPassword = async function (password) {
-  return await bcrypt.hash(password, 10);
-};
+  return await bcrypt.hash(password, 10)
+}
 
-const captainModel = mongoose.model("Captain", captainSchema);
+const captainModel = mongoose.model('Captain', captainSchema)
 
-module.exports = captainModel;
+module.exports = captainModel

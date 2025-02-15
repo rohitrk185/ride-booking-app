@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
 
 const Start = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token')
   if (token) {
-    return navigate("/home");
+    return navigate('/home')
   }
 
   return (
@@ -27,7 +27,7 @@ const Start = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Start;
+export default Start
