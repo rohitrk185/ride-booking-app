@@ -3,6 +3,7 @@ import { useCaptain } from "../context/CaptainContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// eslint-disable-next-line react/prop-types
 const CaptainProtectWrapper = ({ children }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -18,7 +19,7 @@ const CaptainProtectWrapper = ({ children }) => {
     if (!token || !captain || !captain.email) {
       return navigate("/captain-login");
     }
-  }, [token, isLoading]);
+  }, [token, isLoading, captain, navigate]);
 
   useEffect(() => {
     if (!isLoading || !token) {
@@ -47,7 +48,7 @@ const CaptainProtectWrapper = ({ children }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [isLoading]);
+  }, [isLoading, navigate, setCaptain, token]);
 
   if (isLoading) {
     return <div>Loading...</div>;

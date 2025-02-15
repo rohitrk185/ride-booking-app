@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -11,9 +9,6 @@ import LookingForDriver from "../components/LookingForDriver";
 import WaitingForDriver from "../components/WaitingForDriver";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { user } = useUser();
-
   const [pickup, setPickup] = useState("");
   const [destination, setDestination] = useState("");
   const [panelOpen, setPanelOpen] = useState(false);
@@ -154,7 +149,7 @@ const Home = () => {
             <input
               type="text"
               value={pickup}
-              onClick={(e) => {
+              onClick={() => {
                 setPanelOpen(true);
               }}
               onChange={(e) => {
@@ -166,7 +161,7 @@ const Home = () => {
             <input
               type="text"
               value={destination}
-              onClick={(e) => {
+              onClick={() => {
                 setPanelOpen(true);
               }}
               onChange={(e) => {

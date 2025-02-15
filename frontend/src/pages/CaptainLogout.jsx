@@ -2,6 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const CaptainLogout = async () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 

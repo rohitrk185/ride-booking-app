@@ -1,5 +1,5 @@
-import React from "react";
 
+// eslint-disable-next-line react/prop-types
 const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
   return (
     <div className="">

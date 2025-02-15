@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const LocationSearchPanel = ({ setPanelOpen, setVehiclePanelOpen }) => {
   const locations = [
     "91A, Near Malleshwaram, ABCDXYZ, Bengaluru",

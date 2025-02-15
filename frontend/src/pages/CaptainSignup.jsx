@@ -72,7 +72,7 @@ const CaptainSignup = () => {
         <img className="w-16 mb-10" src="/captain-logo.png" alt="" />
 
         <form onSubmit={handleSubmit}>
-          <h3 className="text-lg font-medium mb-2">What's your name</h3>
+          <h3 className="text-lg font-medium mb-2">{"What's your name"}</h3>
           <div className="flex gap-4 mb-6">
             <input
               required
@@ -92,7 +92,7 @@ const CaptainSignup = () => {
             />
           </div>
 
-          <h3 className="text-lg font-medium mb-2">What's your email</h3>
+          <h3 className="text-lg font-medium mb-2">{"What's your email"}</h3>
           <input
             required
             type="email"

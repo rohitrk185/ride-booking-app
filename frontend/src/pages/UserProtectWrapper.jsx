@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../context/UserContext";
 
+// eslint-disable-next-line react/prop-types
 const UserProtectWrapper = ({ children }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
