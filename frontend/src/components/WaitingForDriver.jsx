@@ -23,14 +23,6 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
         </div>
       </div>
 
-      {/* <h3>Looking for a Driver</h3> */}
-
-      {/* <div className="flex flex-col justify-between items-center gap-2">
-        <img
-          src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg"
-          className="h-20"
-        />
-      </div> */}
       <div className="w-full mt-5">
         <div className="flex items-center gap-5 p-2 border-b">
           <i className="ri-map-pin-user-fill text-lg" />
