@@ -15,6 +15,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
+          setVehiclePanelOpen(false);
           setConfirmRidePanelOpen(true);
         }}
       >
@@ -40,6 +41,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
+          setVehiclePanelOpen(false);
           setConfirmRidePanelOpen(true);
         }}
       >
@@ -65,6 +67,7 @@ const VehiclePanel = ({ setVehiclePanelOpen, setConfirmRidePanelOpen }) => {
       <div
         className="flex w-full items-center justify-between p-3 mb-2 active:border-2 border-black rounded-xl"
         onClick={() => {
+          setVehiclePanelOpen(false);
           setConfirmRidePanelOpen(true);
         }}
       >

@@ -1,25 +1,37 @@
 import React from "react";
 
-const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
+const WaitingForDriver = ({ setWaitingForDriver }) => {
   return (
     <div className="">
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setConfirmRidePanelOpen(false);
+          setWaitingForDriver(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
       </h5>
 
-      <h3>Confirm your Ride</h3>
+      <div className="flex items-center justify-between">
+        <img
+          src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg"
+          className="h-12"
+        />
+        <div className="text-right">
+          <h2 className="text-lg font-medium">Rohit</h2>
+          <h4 className="text-xl font-semibold -mt-1 -mb-1">KA 01 AB 1234</h4>
+          <p className="text-sm text-gray-600">Maruti Suzuki Alto</p>
+        </div>
+      </div>
 
-      <div className="flex flex-col justify-between items-center gap-2">
+      {/* <h3>Looking for a Driver</h3> */}
+
+      {/* <div className="flex flex-col justify-between items-center gap-2">
         <img
           src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg"
           className="h-20"
         />
-      </div>
+      </div> */}
       <div className="w-full mt-5">
         <div className="flex items-center gap-5 p-2 border-b">
           <i className="ri-map-pin-user-fill text-lg" />
@@ -50,17 +62,11 @@ const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
         </div>
       </div>
 
-      <button
-        className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5"
-        onClick={() => {
-          setConfirmRidePanelOpen(false);
-          setVehicleFound(true);
-        }}
-      >
+      <button className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5">
         Confirm
       </button>
     </div>
   );
 };
 
-export default ConfirmRide;
+export default WaitingForDriver;
