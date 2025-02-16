@@ -6,7 +6,7 @@ const LocationSearchPanel = ({ setPanelOpen, setVehiclePanelOpen }) => {
     '72A, Near Malleshwaram, AYZBCDX, Bengaluru',
     '38C, Near Malleshwaram, ABZCDXY, Bengaluru',
     '4D, Near Malleshwaram, DXYZABC, Bengaluru',
-  ]
+  ];
 
   return (
     <div className="flex flex-col gap-3.5">
@@ -17,8 +17,8 @@ const LocationSearchPanel = ({ setPanelOpen, setVehiclePanelOpen }) => {
           className="flex items-center justify-start gap-x-3 border-2 active:border-black border-gray-100 p-2 rounded-xl"
           key={location}
           onClick={() => {
-            setPanelOpen(false)
-            setVehiclePanelOpen(true)
+            setPanelOpen(false);
+            setVehiclePanelOpen(true);
           }}
         >
           <h2 className="bg-[#eee] rounded-full w-10 h-8   flex items-center justify-center">
@@ -28,7 +28,7 @@ const LocationSearchPanel = ({ setPanelOpen, setVehiclePanelOpen }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default LocationSearchPanel
+export default LocationSearchPanel;

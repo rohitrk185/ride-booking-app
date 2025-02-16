@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Start = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {
-      return navigate('/home')
+      return navigate('/home');
     }
-  }, [token, navigate])
+  }, [token, navigate]);
 
   return (
     <div className="overflow-hidden bg-transparent">
@@ -31,7 +31,7 @@ const Start = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Start
+export default Start;

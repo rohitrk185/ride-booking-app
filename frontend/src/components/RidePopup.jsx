@@ -5,7 +5,7 @@ const RidePopup = ({ setRidePopupPanel, setConfirmRidePopupPanel }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setRidePopupPanel(false)
+          setRidePopupPanel(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -60,7 +60,7 @@ const RidePopup = ({ setRidePopupPanel, setConfirmRidePopupPanel }) => {
       <button
         className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5"
         onClick={() => {
-          setConfirmRidePopupPanel(true)
+          setConfirmRidePopupPanel(true);
         }}
       >
         Accept
@@ -69,13 +69,13 @@ const RidePopup = ({ setRidePopupPanel, setConfirmRidePopupPanel }) => {
       <button
         className="w-full bg-gray-300 text-gray-70 font-semibold p-2 rounded-lg mt-2"
         onClick={() => {
-          setRidePopupPanel(false)
+          setRidePopupPanel(false);
         }}
       >
         Ignore
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default RidePopup
+export default RidePopup;

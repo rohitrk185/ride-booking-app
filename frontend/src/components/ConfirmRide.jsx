@@ -5,7 +5,7 @@ const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setConfirmRidePanelOpen(false)
+          setConfirmRidePanelOpen(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -52,14 +52,14 @@ const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
       <button
         className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5"
         onClick={() => {
-          setConfirmRidePanelOpen(false)
-          setVehicleFound(true)
+          setConfirmRidePanelOpen(false);
+          setVehicleFound(true);
         }}
       >
         Confirm
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ConfirmRide
+export default ConfirmRide;

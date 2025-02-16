@@ -1,48 +1,4 @@
-import { Link } from 'react-router-dom';
-import CaptainDetails from '../components/CaptainDetails';
-import RidePopup from '../components/RidePopup';
-import { useRef, useState } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import ConfirmRidePopup from '../components/ConfirmRidePopup';
-
-const CaptainHome = () => {
-  const [ridePopupPanel, setRidePopupPanel] = useState(true);
-  const [confirmRidePopupPanel, setConfirmRidePopupPanel] = useState(false);
-
-  const ridePopupPanelRef = useRef(null);
-  const confirmRidePopupPanelRef = useRef(null);
-
-  useGSAP(
-    function () {
-      if (ridePopupPanel) {
-        gsap.to(ridePopupPanelRef.current, {
-          transform: 'translateY(0)',
-        });
-      } else {
-        gsap.to(ridePopupPanelRef.current, {
-          transform: 'translateY(100%)',
-        });
-      }
-    },
-    [ridePopupPanel]
-  );
-
-  useGSAP(
-    function () {
-      if (confirmRidePopupPanel) {
-        gsap.to(confirmRidePopupPanelRef.current, {
-          transform: 'translateY(0)',
-        });
-      } else {
-        gsap.to(confirmRidePopupPanelRef.current, {
-          transform: 'translateY(100%)',
-        });
-      }
-    },
-    [confirmRidePopupPanel]
-  );
-
+const CaptainRiding = () => {
   return (
     <div className="h-screen">
       <div className="fixed p-6 top-0 flex items-center justify-between w-full">
@@ -93,4 +49,4 @@ const CaptainHome = () => {
   );
 };
 
-export default CaptainHome;
+export default CaptainRiding;

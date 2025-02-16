@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // eslint-disable-next-line react/prop-types
 const ConfirmRidePopup = ({ setConfirmRidePopupPanel, setRidePopupPanel }) => {
   return (
@@ -5,7 +7,7 @@ const ConfirmRidePopup = ({ setConfirmRidePopupPanel, setRidePopupPanel }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setConfirmRidePopupPanel(false)
+          setConfirmRidePopupPanel(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -59,27 +61,24 @@ const ConfirmRidePopup = ({ setConfirmRidePopupPanel, setRidePopupPanel }) => {
         </div>
       </div>
 
-      <button
-        className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5"
-        onClick={() => {
-          //   setConfirmRidePanelOpen(false)
-          //   setVehicleFound(true)
-        }}
+      <Link
+        className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5 flex justify-center"
+        to={'/captain-riding'}
       >
         Confirm
-      </button>
+      </Link>
 
       <button
         className="w-full text-gray-70 font-semibold p-2 rounded-lg mt-2 text-white bg-red-500"
         onClick={() => {
-          setRidePopupPanel(false)
-          setConfirmRidePopupPanel(false)
+          setRidePopupPanel(false);
+          setConfirmRidePopupPanel(false);
         }}
       >
         Cancel
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ConfirmRidePopup
+export default ConfirmRidePopup;

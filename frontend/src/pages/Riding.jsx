@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Riding = () => {
   return (
@@ -55,7 +55,7 @@ const Riding = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Riding
+export default Riding;

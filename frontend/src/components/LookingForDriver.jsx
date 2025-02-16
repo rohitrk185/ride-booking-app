@@ -5,7 +5,7 @@ const LookingForDriver = ({ setVehicleFound }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setVehicleFound(false)
+          setVehicleFound(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -53,7 +53,7 @@ const LookingForDriver = ({ setVehicleFound }) => {
         Confirm
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default LookingForDriver
+export default LookingForDriver;

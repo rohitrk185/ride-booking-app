@@ -1,13 +1,13 @@
-const express = require('express')
-const router = express.Router()
-const { body } = require('express-validator')
+const express = require('express');
+const router = express.Router();
+const { body } = require('express-validator');
 const {
   registerUser,
   loginUser,
   getUserProfile,
   logoutUser,
-} = require('../controllers/user.controller')
-const { authUser } = require('../middlewares/auth.middleware')
+} = require('../controllers/user.controller');
+const { authUser } = require('../middlewares/auth.middleware');
 
 router.post(
   '/register',
@@ -21,7 +21,7 @@ router.post(
       .withMessage('Password must be atleast 6 characters long'),
   ],
   registerUser
-)
+);
 
 router.post(
   '/login',
@@ -32,9 +32,9 @@ router.post(
       .withMessage('Password must be atleast 6 characters long'),
   ],
   loginUser
-)
+);
 
-router.get('/profile', authUser, getUserProfile)
-router.get('/logout', authUser, logoutUser)
+router.get('/profile', authUser, getUserProfile);
+router.get('/logout', authUser, logoutUser);
 
-module.exports = router
+module.exports = router;

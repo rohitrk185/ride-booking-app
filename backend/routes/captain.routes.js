@@ -1,13 +1,13 @@
-const express = require('express')
-const router = express.Router()
-const { body } = require('express-validator')
+const express = require('express');
+const router = express.Router();
+const { body } = require('express-validator');
 const {
   registerCaptain,
   loginCaptain,
   getCaptainProfile,
-} = require('../controllers/captain.controller')
-const { authCaptain } = require('../middlewares/auth.middleware')
-const { logoutUser } = require('../controllers/user.controller')
+} = require('../controllers/captain.controller');
+const { authCaptain } = require('../middlewares/auth.middleware');
+const { logoutUser } = require('../controllers/user.controller');
 
 router.post(
   '/register',
@@ -33,7 +33,7 @@ router.post(
       .withMessage('Invalid Vehicle Type'),
   ],
   registerCaptain
-)
+);
 
 router.post(
   '/login',
@@ -44,9 +44,9 @@ router.post(
       .withMessage('Password must be atleast 6 characters long'),
   ],
   loginCaptain
-)
+);
 
-router.get('/profile', authCaptain, getCaptainProfile)
-router.get('/logout', authCaptain, logoutUser)
+router.get('/profile', authCaptain, getCaptainProfile);
+router.get('/logout', authCaptain, logoutUser);
 
-module.exports = router
+module.exports = router;

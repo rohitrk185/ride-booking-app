@@ -5,7 +5,7 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setWaitingForDriver(false)
+          setWaitingForDriver(false);
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
@@ -57,7 +57,7 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
         Confirm
       </button> */}
     </div>
-  )
-}
+  );
+};
 
-export default WaitingForDriver
+export default WaitingForDriver;

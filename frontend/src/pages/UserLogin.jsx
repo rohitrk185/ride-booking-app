@@ -1,48 +1,48 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useUser } from '../context/UserContext'
-import axios from 'axios'
-import { useCaptain } from '../context/CaptainContext'
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
+import axios from 'axios';
+import { useCaptain } from '../context/CaptainContext';
 
 const UserLogin = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const { user, setUser } = useUser()
-  const { setCaptain } = useCaptain()
+  const { user, setUser } = useUser();
+  const { setCaptain } = useCaptain();
 
   useEffect(() => {
     if (user && user.email) {
-      navigate('/home')
+      navigate('/home');
     }
-  }, [user])
+  }, [user]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newUser = {
       email,
       password,
-    }
+    };
 
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_BASE_URL}/users/login`,
       newUser
-    )
+    );
 
     if (response.status === 200) {
-      const { token, user: loggedInUser } = response.data
-      setUser(loggedInUser)
-      setCaptain(null)
-      localStorage.setItem('token', token)
+      const { token, user: loggedInUser } = response.data;
+      setUser(loggedInUser);
+      setCaptain(null);
+      localStorage.setItem('token', token);
 
-      navigate('/home', { replace: true })
+      navigate('/home', { replace: true });
     }
 
-    setEmail('')
-    setPassword('')
-  }
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
@@ -91,7 +91,7 @@ const UserLogin = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserLogin
+export default UserLogin;

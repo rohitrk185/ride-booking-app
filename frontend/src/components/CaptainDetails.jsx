@@ -37,7 +37,7 @@ const CaptainDetails = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CaptainDetails
+export default CaptainDetails;
