@@ -1,12 +1,16 @@
+import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Start = () => {
   const navigate = useNavigate()
 
   const token = localStorage.getItem('token')
-  if (token) {
-    return navigate('/home')
-  }
+
+  useEffect(() => {
+    if (token) {
+      return navigate('/home')
+    }
+  }, [token, navigate])
 
   return (
     <div className="overflow-hidden bg-transparent">

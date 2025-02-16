@@ -1,7 +1,9 @@
 import { createContext, useContext, useState } from 'react'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const CaptainDataContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCaptain = () => {
   const context = useContext(CaptainDataContext)
   if (!context) {
@@ -10,6 +12,7 @@ export const useCaptain = () => {
   return context
 }
 
+// eslint-disable-next-line react/prop-types
 const CaptainContext = ({ children }) => {
   const [captain, setCaptain] = useState({
     email: '',

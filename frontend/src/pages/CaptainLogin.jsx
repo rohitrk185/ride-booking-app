@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCaptain } from '../context/CaptainContext'
 import axios from 'axios'
+import { useUser } from '../context/UserContext'
 
 const CaptainLogin = () => {
   const navigate = useNavigate()
@@ -10,13 +11,13 @@ const CaptainLogin = () => {
   const [password, setPassword] = useState('')
 
   const { captain, setCaptain } = useCaptain()
-  const { setUser } = useCaptain()
+  const { setUser } = useUser()
 
   useEffect(() => {
     if (captain && captain.email) {
       navigate('/captain-home')
     }
-  }, [captain])
+  }, [captain, navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -49,7 +50,7 @@ const CaptainLogin = () => {
         <img className="w-16 mb-10" src="/captain-logo.png" alt="" />
 
         <form onSubmit={handleSubmit}>
-          <h3 className="text-lg font-medium mb-2">What's your email</h3>
+          <h3 className="text-lg font-medium mb-2">{"What's your email"}</h3>
           <input
             required
             type="email"
