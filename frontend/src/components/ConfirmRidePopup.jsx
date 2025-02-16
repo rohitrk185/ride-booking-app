@@ -1,24 +1,34 @@
 // eslint-disable-next-line react/prop-types
-const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
+const ConfirmRidePopup = ({ setConfirmRidePopupPanel, setRidePopupPanel }) => {
   return (
-    <div className="">
+    <div>
       <h5
         className="w-[90%] p-2 text-center absolute top-0"
         onClick={() => {
-          setConfirmRidePanelOpen(false)
+          setConfirmRidePopupPanel(false)
         }}
       >
         <i className="ri-arrow-down-wide-line text-2xl text-gray-500 font-bold" />
       </h5>
 
-      <h3 className="text-2xl font-semibold mb-5">Confirm your Ride</h3>
+      <h3 className="text-2xl font-semibold mb-5">
+        {'Confirm this Ride to Start'}
+      </h3>
 
-      <div className="flex flex-col justify-between items-center gap-2">
-        <img
-          src="https://swyft.pl/wp-content/uploads/2023/05/how-many-people-can-a-uberx-take.jpg"
-          className="h-20"
-        />
+      <div className="flex items-center justify-between mt-4 p-2 bg-yellow-400 rounded-xl">
+        <div className="flex items-center justify-between gap-x-4">
+          <img
+            className="h-12 w-10 rounded-full object-cover"
+            src="https://plus.unsplash.com/premium_photo-1689565611422-b2156cc65e47?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+          <h2 className="text-lg font-medium">Rohit Kumar</h2>
+        </div>
+
+        <h5 className="text-lg font-semibold">2.2 KM</h5>
       </div>
+
+      <div className="flex flex-col justify-between items-center gap-2"></div>
       <div className="w-full mt-5">
         <div className="flex items-center gap-5 p-2 border-b">
           <i className="ri-map-pin-user-fill text-lg" />
@@ -52,14 +62,24 @@ const ConfirmRide = ({ setConfirmRidePanelOpen, setVehicleFound }) => {
       <button
         className="w-full bg-green-500 text-gray-50 font-semibold p-2 rounded-lg mt-5"
         onClick={() => {
-          setConfirmRidePanelOpen(false)
-          setVehicleFound(true)
+          //   setConfirmRidePanelOpen(false)
+          //   setVehicleFound(true)
         }}
       >
         Confirm
+      </button>
+
+      <button
+        className="w-full text-gray-70 font-semibold p-2 rounded-lg mt-2 text-white bg-red-500"
+        onClick={() => {
+          setRidePopupPanel(false)
+          setConfirmRidePopupPanel(false)
+        }}
+      >
+        Cancel
       </button>
     </div>
   )
 }
 
-export default ConfirmRide
+export default ConfirmRidePopup
